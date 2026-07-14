@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atelier Chantournage | Créations d'Art en Bois</title>
-    <!-- Importation de polices élégantes depuis Google Fonts -->
+    <title>Atelier Chantournage | Pièces d'Art uniques en Bois</title>
+    
+    <!-- Polices de prestige -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --color-primary: #4a3728; /* Brun écorce profond */
-            --color-secondary: #8c7865; /* Beige lin */
-            --color-accent: #c4a482; /* Bois doré */
-            --color-light: #fbfaf8; /* Blanc crème */
-            --color-dark: #231912; /* Presque noir chaud */
+            --bg-base: #faf8f5;
+            --color-dark: #120e0c;
+            --color-muted: #70635a;
+            --color-accent: #d4af37; /* Or brossé */
+            --color-accent-hover: #f3e5ab;
+            --color-sand: #f2e9de;
             --stripe-color: #635bff;
-            --stripe-hover: #4b43d3;
-            --shadow-subtle: 0 10px 30px rgba(35, 25, 18, 0.04);
-            --shadow-hover: 0 20px 40px rgba(35, 25, 18, 0.08);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --stripe-hover: #4f47ff;
+            --font-display: 'Cinzel Decorative', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -29,248 +31,532 @@
             padding: 0;
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f7f4ef;
-            color: var(--color-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* --- EN-TÊTE --- */
-        header {
-            background-color: rgba(251, 250, 248, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(140, 120, 101, 0.1);
-            padding: 30px 20px;
-            text-align: center;
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
+            color: var(--color-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- EFFET DE REVEAL AU DEFILEMENT --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition-smooth);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NAVIGATION FLOATING (STYLE PREMIUM) --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(250, 248, 245, 0.75);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             position: sticky;
             top: 0;
-            z-index: 100;
-            transition: var(--transition);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(18, 14, 12, 0.03);
+            transition: var(--transition-smooth);
         }
 
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            font-size: 32px;
-            color: var(--color-primary);
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--color-dark);
+            text-decoration: none;
         }
 
-        .tagline {
-            font-size: 13px;
-            color: var(--color-secondary);
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-weight: 500;
-        }
-
-        /* --- HERO BANNER --- */
-        .hero {
-            background: linear-gradient(rgba(35, 25, 18, 0.6), rgba(35, 25, 18, 0.7)), 
-                        url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1400') no-repeat center center/cover;
-            color: var(--color-light);
-            padding: 100px 20px;
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 400;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            color: rgba(251, 250, 248, 0.9);
-        }
-
-        .demo-badge {
-            display: inline-block;
-            background-color: var(--color-accent);
-            color: var(--color-dark);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 11px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
         }
 
-        /* --- SECTION CONTENU --- */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-muted);
+            position: relative;
+            padding-bottom: 5px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-accent);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+            /* --- HERO SPLASH FULLSCREEN --- */
+
+        body::before{
+            content:"";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                radial-gradient(circle at 20% 10%, rgba(212,175,55,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 30%, rgba(99,91,255,0.07) 0%, transparent 45%),
+                linear-gradient(180deg, rgba(250,248,245,0.0), rgba(250,248,245,0.9));
+            opacity: 1;
+        }
+
+        body::after{
+            content:"";
+            position: fixed;
+            inset: -20%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.18"/></svg>');
+            background-size: 220px 220px;
+            mix-blend-mode: multiply;
+            opacity: 0.25;
+            transform: translateZ(0);
+        }
+
+        nav, main, section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section {
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(18, 14, 12, 0.4), rgba(18, 14, 12, 0.75)), 
+                        url('images/14.jpg') no-repeat center center/cover;
+            background-attachment: fixed; /* Effet Parallaxe */
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--color-accent);
+            margin-bottom: 30px;
+            display: inline-block;
+            font-weight: 600;
+            border: 1px solid var(--color-accent);
+            padding: 8px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-section h1 {
+            font-family: var(--font-display);
+            font-size: clamp(34px, 7vw, 75px);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero-section p {
+            font-size: clamp(14px, 2vw, 18px);
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.6);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+
+        /* --- PRESENTATION DE L'ARTISAN --- */
+        .intro-text {
+            max-width: 900px;
+            margin: 120px auto;
+            text-align: center;
             padding: 0 30px;
         }
 
-        .section-title {
+        .intro-text h2 {
+            font-family: var(--font-display);
+            font-size: 36px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .intro-text p {
+            font-size: 17px;
+            color: var(--color-muted);
+            line-height: 2.1;
+            font-weight: 300;
+        }
+
+        /* --- SECTION CATALOGUE ASYMÉTRIQUE --- */
+        .catalog-container {
+            max-width: 1400px;
+            margin: 0 auto 160px auto;
+            padding: 0 5%;
+        }
+
+        .grid-header {
             text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: var(--color-primary);
-            margin-bottom: 40px;
-            position: relative;
+            margin-bottom: 100px;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 1px;
-            background-color: var(--color-accent);
-            margin: 15px auto 0 auto;
+        .grid-header h3 {
+            font-family: var(--font-display);
+            font-size: 40px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
         }
 
-        /* --- CATALOGUE --- */
-        .catalog {
+        .grid-header p {
+            font-size: 13px;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 60px;
         }
 
-        .product-card {
-            background: var(--color-light);
-            border-radius: 16px;
+        /* Cartes d'art minimalistes haut de gamme */
+        .art-card {
+            background-color: transparent;
             overflow: hidden;
-            box-shadow: var(--shadow-subtle);
-            border: 1px solid rgba(140, 120, 101, 0.08);
-            transition: var(--transition);
+            transition: var(--transition-smooth);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(196, 164, 130, 0.3);
+        .card-large { grid-column: span 7; }
+        .card-medium { grid-column: span 5; margin-top: 100px; }
+        .card-small { grid-column: span 4; }
+        .card-shift { grid-column: span 8; margin-top: -80px; }
+
+        @media (max-width: 990px) {
+            .art-card { grid-column: span 12 !important; margin-top: 0 !important; }
+            .gallery-grid { gap: 40px; }
         }
 
-        /* Image avec effet de zoom au survol */
-        .product-image-wrapper {
+        .image-container {
             position: relative;
             width: 100%;
-            height: 300px;
+            height: 550px;
             overflow: hidden;
-            background-color: #eae3db;
+            background-color: var(--color-sand);
+            border-radius: 8px;
+            cursor: zoom-in;
+            box-shadow: 0 20px 40px rgba(18, 14, 12, 0.04);
         }
 
-        .product-image {
+        .art-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .product-card:hover .product-image {
-            transform: scale(1.06);
+        .art-card:hover .art-image {
+            transform: scale(1.08);
         }
 
-        .product-info {
-            padding: 30px;
-            flex-grow: 1;
+        .badge-unique {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: #fff;
+            color: var(--color-dark);
+            padding: 8px 18px;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .art-details {
+            padding: 30px 10px;
             display: flex;
             flex-direction: column;
         }
 
-        .product-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--color-primary);
+        .art-category {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-accent);
             margin-bottom: 12px;
+            font-weight: 600;
         }
 
-        .product-desc {
+        .art-title {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .art-description {
             font-size: 14px;
-            color: #665c54;
-            line-height: 1.6;
+            color: var(--color-muted);
+            line-height: 1.8;
             margin-bottom: 30px;
             font-weight: 300;
-            flex-grow: 1;
         }
 
-        .product-footer {
+        .art-action-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: auto;
-            border-top: 1px solid rgba(140, 120, 101, 0.1);
-            padding-top: 20px;
+            border-top: 1px solid rgba(18, 14, 12, 0.08);
+            padding-top: 25px;
         }
 
-        .price {
-            font-size: 24px;
-            font-weight: 500;
-            color: var(--color-primary);
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Bouton d'achat customisé */
-        .btn-buy {
-            background-color: var(--color-primary);
-            color: var(--color-light);
-            border: none;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-buy:hover {
-            background-color: var(--color-accent);
+        .art-price {
+            font-family: var(--font-display);
+            font-size: 28px;
             color: var(--color-dark);
         }
 
-        /* Bouton Spécial Stripe */
-        .btn-stripe {
-            background-color: var(--stripe-color);
-            box-shadow: 0 4px 14px rgba(99, 91, 255, 0.2);
-        }
-
-        .btn-stripe:hover {
-            background-color: var(--stripe-hover);
+        /* BOUTON D'ACHAT PREMIUM */
+        .btn-checkout {
+            background-color: var(--color-dark);
             color: #fff;
-            transform: translateY(-1px);
+            border: 1px solid var(--color-dark);
+            padding: 16px 40px;
+            text-decoration: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(18, 14, 12, 0.1);
         }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--color-primary);
-            color: rgba(251, 250, 248, 0.7);
+        .btn-checkout:hover {
+            background-color: transparent;
+            color: var(--color-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(18, 14, 12, 0.15);
+        }
+
+        .btn-stripe-premium {
+            background-color: var(--stripe-color);
+            border-color: var(--stripe-color);
+            box-shadow: 0 10px 20px rgba(99, 91, 255, 0.2);
+        }
+
+        .btn-stripe-premium:hover {
+            background-color: var(--stripe-hover);
+            border-color: var(--stripe-hover);
+            color: #fff;
+        }
+
+        /* --- GALERIE DE ZOOM LIGHTBOX --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(18, 14, 12, 0.95);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+            border-radius: 4px;
+            animation: zoomIn 0.4s var(--transition-smooth);
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            font-weight: 200;
+            transition: var(--transition-smooth);
+        }
+
+        .lightbox-close:hover {
+            color: var(--color-accent);
+            transform: rotate(90deg);
+        }
+
+        /* --- BANNIERE PHILOSOPHIE --- */
+        .philosophy-banner {
+            background-color: #120e0c;
+            color: #fff;
+            padding: 160px 10%;
             text-align: center;
-            padding: 60px 20px;
+            position: relative;
+        }
+
+        .philosophy-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 80%);
+        }
+
+        .philosophy-banner h2 {
+            font-family: var(--font-display);
+            font-size: 42px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            color: var(--color-accent);
+        }
+
+        .philosophy-banner p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 2.2;
+            color: rgba(255,255,255,0.8);
+            font-weight: 200;
+        }
+
+        /* --- FOOTER MODERNE --- */
+        footer {
+            background-color: var(--color-dark);
+            color: rgba(252, 251, 250, 0.4);
+            padding: 120px 5% 60px 5%;
             font-size: 13px;
             font-weight: 300;
-            border-top: 4px solid var(--color-accent);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        footer p {
-            margin-bottom: 10px;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto 80px auto;
         }
 
-        footer a {
+        .footer-col h4 {
+            color: #fff;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col p {
+            line-height: 1.9;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(252, 251, 250, 0.4);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom a {
             color: var(--color-accent);
             text-decoration: none;
         }
@@ -278,79 +564,173 @@
 </head>
 <body>
 
-    <header>
-        <h1>Atelier Chantournage</h1>
-        <p class="tagline">Créations d'art en dentelle de bois</p>
-    </header>
+    <!-- NAVIGATION PRESTIGE -->
+    <nav>
+        <a href="#" class="nav-logo">Atelier Chantournage</a>
+        <ul class="nav-links">
+            <li><a href="#collection">La Galerie</a></li>
+            <li><a href="#philosophie">L'Atelier</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <div class="hero">
-        <span class="demo-badge">Maquette de démonstration</span>
-        <h2>L'Art de la découpe de précision</h2>
-        <p>Chaque pièce est dessinée, découpée à la main à la scie mécanique dans notre atelier, puis protégée avec des huiles et cires éco-responsables.</p>
+    <!-- HERO SECTION LUXE (Utilise l'image 14.jpg) -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <span class="hero-badge">Sculptures d'Art Françaises</span>
+            <h1>L'Éloge du Geste & de la Précision</h1>
+            <p>Une rencontre entre la noblesse des essences de bois locales et la légèreté de la découpe ajourée. Chaque création est une pièce de collection unique.</p>
+        </div>
+        <div class="scroll-indicator">Découvrir la Galerie ↓</div>
+    </section>
+
+    <!-- INTRO TEXT -->
+    <section class="intro-text reveal">
+        <h2>La Dentelle Sculptée</h2>
+        <p>Le chantournage d'art transcende le bois massif pour en faire de la dentelle. Chaque courbe est dessinée puis guidée manuellement face à une scie mécanique oscillant à haute vitesse. C'est un dialogue intime entre l'artisan, la lame d'acier et le fil du bois. Un art d'une précision chirurgicale pour donner vie à la matière.</p>
+    </section>
+
+    <!-- CATALOGUE HAUTE COUTURE -->
+    <section class="catalog-container" id="collection">
+        <div class="grid-header reveal">
+            <h3>Les Créations d'Exception</h3>
+            <p>Disponibles à l'acquisition</p>
+        </div>
+
+        <div class="gallery-grid">
+            
+            <!-- Œuvre 1 : LE CHIEN (Image 1.jpg) -->
+            <div class="art-card card-large reveal">
+                <div class="image-container" onclick="openLightbox('images/1.jpg')">
+                    <span class="badge-unique">Pièce Unique</span>
+                    <img src="images/1.jpg" class="art-image" alt="Le Chien de l'Atelier">
+                </div>
+                <div class="art-details">
+                    <span class="art-category">Sculpture Animalière</span>
+                    <h4 class="art-title">Le Chien de l'Atelier</h4>
+                    <p class="art-description">Une pièce d'une incroyable sensibilité capturant le profil noble et fidèle d'un canidé. Découpée dans une essence de bois précieux choisie pour sa texture délicate et son contraste d'exposition.</p>
+                    <div class="art-action-row">
+                        <span class="art-price">65,00 €</span>
+                        <a href="https://buy.stripe.com/test_8x2cN5aOw8pb1xdeNNdnW00" class="btn-checkout btn-stripe-premium" target="_blank" onclick="trackRedirection(this)">Acquérir l'œuvre</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Œuvre 2 : (Image 2.jpeg) -->
+            <div class="art-card card-medium reveal">
+                <div class="image-container" onclick="openLightbox('images/2.jpeg')">
+                    <span class="badge-unique">Sur Commande</span>
+                    <img src="images/2.jpeg" class="art-image" alt="Cerf Souverain en Chêne">
+                </div>
+                <div class="art-details">
+                    <span class="art-category">Art Mural</span>
+                    <h4 class="art-title">Le Gardien des Bois</h4>
+                    <p class="art-description">Une pièce forte sculptée dans du chêne massif local. Les veines du bois d'origine s'harmonisent avec les lignes épurées de la silhouette pour faire entrer la forêt dans votre intérieur.</p>
+                    <div class="art-action-row">
+                        <span class="art-price">95,00 €</span>
+                        <button class="btn-checkout" onclick="alert('Ceci est une maquette. Seul le produit Chien de l\'Atelier possède un bouton de paiement fonctionnel !')">Réserver</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Œuvre 3 : (Image 3.jpeg) -->
+            <div class="art-card card-small reveal">
+                <div class="image-container" onclick="openLightbox('images/3.jpeg')">
+                    <img src="images/3.jpeg" class="art-image" alt="Colombe de la paix">
+                </div>
+                <div class="art-details">
+                    <span class="art-category">Art suspendu</span>
+                    <h4 class="art-title">Vol de Colombe</h4>
+                    <p class="art-description">Une œuvre suspendue aérienne en bois de frêne brut. Légère comme une plume, elle tourne lentement au gré de l'air ambiant, créant un jeu d'ombres apaisant.</p>
+                    <div class="art-action-row">
+                        <span class="art-price">30,00 €</span>
+                        <button class="btn-checkout" onclick="alert('Ceci est une maquette. Seul le produit Chien de l\'Atelier possède un bouton de paiement fonctionnel !')">Réserver</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BANNIERE PHILOSOPHIE -->
+    <section class="philosophy-banner" id="philosophie">
+        <div class="reveal">
+            <h2>L'âme de l'artisanat d'art</h2>
+            <p>Ici, pas de commande numérique, pas d'assistance laser. Chaque interstice évidé, chaque millimètre de bois retiré est le résultat d'une attention totale et de la main de l'homme. C'est cette infime variation artisanale qui confère à nos créations leur vibration unique et leur élégance intemporelle.</p>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX (ZOOM D'IMAGE INTERACTIF) -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Zoom création">
     </div>
 
-    <main>
-        <h3 class="section-title">Le Catalogue</h3>
-
-        <div class="catalog">
-            <!-- Produit 1 : Stripe -->
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <!-- Image haut de gamme d'un vrai objet en bois chantourné ou travail du bois -->
-                    <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=600" class="product-image" alt="Chien en bois chantourné">
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Chien en bois chantourné</h4>
-                    <p class="product-desc">Une sculpture tout en finesse capturant l'élégance de nos compagnons à quatre pattes. Façonné minutieusement dans une essence de bois précieux pour un contraste naturel saisissant.</p>
-                    <div class="product-footer">
-                        <span class="price">65,00 €</span>
-                        <a href="https://buy.stripe.com/test_8x2cN5a0W8pb1xdeNNdnW0" class="btn-buy btn-stripe" target="_blank" onclick="trackClick(this)">Commander</a>
-                    </div>
-                </div>
+    <!-- FOOTER HAUT DE GAMME -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>L'Atelier Chantournage</h4>
+                <p>Créations d'art éco-conçues. Bois sourcés localement dans des forêts gérées durablement.</p>
             </div>
-
-            <!-- Produit 2 -->
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=600" class="product-image" alt="Cerf majestueux">
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Cerf Majestueux en Chêne</h4>
-                    <p class="product-desc">Pièce d'exception représentant la silhouette d'un cerf au cœur d'une forêt sauvage. Réalisée dans un plateau de chêne massif, mettant en valeur son veinage unique.</p>
-                    <div class="product-footer">
-                        <span class="price">95,00 €</span>
-                        <button class="btn-buy" onclick="alert('Ceci est une démo. Seul le produit Chien possède un bouton Stripe actif !')">Acheter</button>
-                    </div>
-                </div>
+            <div class="footer-col">
+                <h4>Démo Technique</h4>
+                <p>Site de démonstration connecté à Stripe Test Mode. Aucune transaction réelle ne sera facturée.</p>
             </div>
-
-            <!-- Produit 3 -->
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=600" class="product-image" alt="Colombe de la paix">
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Colombe de la Paix</h4>
-                    <p class="product-desc">Suspension poétique et aérienne d'une extrême légèreté. Découpée dans du bois de frêne brut satiné pour apporter une touche de douceur et d'épuration à votre intérieur.</p>
-                    <div class="product-footer">
-                        <span class="price">30,00 €</span>
-                        <button class="btn-buy" onclick="alert('Ceci est une démo. Seul le produit Chien possède un bouton Stripe actif !')">Acheter</button>
-                    </div>
-                </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="#philosophie">L'Atelier</a></li>
+                    <li><a href="#contact">Nous contacter</a></li>
+                </ul>
             </div>
         </div>
-    </main>
-
-    <footer>
-        <p>🔒 Démo sécurisée propulsée par Cloudflare Pages & Stripe Test Mode</p>
-        <p>Atelier Chantournage &copy; 2026 - Créé avec passion pour notre famille</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Atelier Chantournage. Développé avec excellence par Mathis.</p>
+            <p>Hébergé de manière éco-responsable sur <a href="https://pages.cloudflare.com" target="_blank">Cloudflare Pages</a>.</p>
+        </div>
     </footer>
 
+    <!-- INTERACTIVITE JAVASCRIPT -->
     <script>
-        // Petite animation JS pour donner un sentiment dynamique
-        function trackClick(btn) {
-            btn.innerHTML = "Redirection...";
-            btn.style.opacity = "0.7";
+        // 1. GESTION DU SCROLL REVEAL (Apparitions fluides au défilement)
+        function revealElements() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 120; // Se déclenche quand l'élément est visible à 120px du bas de l'écran
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealElements);
+        // Lancement au chargement pour les premiers éléments visibles
+        window.addEventListener('load', revealElements);
+
+        // 2. GESTION DE LA GALERIE ZOOM (Lightbox)
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Bloque le scroll arrière
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Réactive le scroll
+        }
+
+        // 3. EFFET BOUTON REDIRECTION
+        function trackRedirection(btn) {
+            btn.innerHTML = "Ouverture de la caisse sécurisée...";
+            btn.style.opacity = "0.8";
         }
     </script>
 </body>
