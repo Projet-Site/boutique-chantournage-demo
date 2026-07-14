@@ -3,68 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Démo Boutique - Artisanat du Bois</title>
+    <title>Atelier Chantournage | Boutique Artisanale</title>
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f5f0ea; 
-            color: #3e2723; 
-            margin: 0; 
-            padding: 40px 20px; 
+        :root {
+            --wood-dark: #3e2723;
+            --wood-medium: #5d4037;
+            --wood-light: #8d6e63;
+            --bg-cream: #fbf9f6;
+            --card-border: #e6ded6;
+            --stripe-color: #635bff;
+            --stripe-hover: #4b43d3;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--wood-dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--card-border);
+            padding: 20px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+            color: var(--wood-medium);
+            letter-spacing: 1px;
         }
-        .card { 
-            background: #ffffff; 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 20px rgba(62, 39, 35, 0.05); 
-            border: 1px solid #e0d4c8;
+
+        .tagline {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: var(--wood-light);
+            font-style: italic;
         }
-        h1 { color: #5d4037; margin-bottom: 5px; font-size: 24px; }
-        .subtitle { color: #8d6e63; font-style: italic; margin-bottom: 25px; }
-        .product-title { font-size: 20px; font-weight: bold; margin-top: 15px; }
-        .price { 
-            font-size: 22px; 
-            color: #2e7d32; 
-            font-weight: bold; 
-            margin: 15px 0 25px 0; 
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        .btn { 
-            background: #635bff; 
-            color: white; 
-            padding: 14px 28px; 
-            text-decoration: none; 
-            border-radius: 6px; 
-            font-weight: bold; 
-            display: inline-block; 
-            transition: background 0.2s;
+
+        .hero-banner {
+            background: linear-gradient(rgba(93, 64, 55, 0.04), rgba(93, 64, 55, 0.01));
+            border: 1px dashed var(--wood-light);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-banner p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(62, 39, 35, 0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(62, 39, 35, 0.06);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f0e6df;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 20px;
+            margin: 0 0 10px 0;
+            color: var(--wood-dark);
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: #6d6d6d;
+            line-height: 1.5;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--wood-medium);
+        }
+
+        .btn-buy {
+            background-color: var(--stripe-color);
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.2s;
             box-shadow: 0 4px 6px rgba(99, 91, 255, 0.15);
         }
-        .btn:hover { background: #4b43d3; }
-        .notice { font-size: 12px; color: #9e9e9e; margin-top: 25px; }
+
+        .btn-buy:hover {
+            background-color: var(--stripe-hover);
+        }
+
+        footer {
+            text-align: center;
+            margin: 80px 0 40px 0;
+            font-size: 13px;
+            color: #9e9e9e;
+            border-top: 1px solid var(--card-border);
+            padding-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <h1>Atelier Chantournage</h1>
-            <div class="subtitle">Boutique de démonstration</div>
-            
-            <hr style="border: 0; border-top: 1px solid #e0d4c8; margin-bottom: 20px;">
-            
-            <div class="product-title">🐾 Chien en bois chantourné</div>
-            <p>Création artisanale unique réalisée entièrement à la main.</p>
-            
-            <div class="price">45,00 €</div>
-            
-            <a href="https://buy.stripe.com/test_8x2cN5aOw8pb1xdeNNdnW00" class="btn" target="_blank">Acheter cette création</a>
-            
-            <p class="notice">🔒 Paiement sécurisé par Stripe (Mode Test actif)</p>
+
+    <header>
+        <h1>L'Atelier de Chantournage</h1>
+        <p class="tagline">Créations artisanales uniques en bois découpé</p>
+    </header>
+
+    <main>
+        <div class="hero-banner">
+            <p><strong>Bienvenue sur notre site de démonstration !</strong><br>
+            Explorez le catalogue fictif ci-dessous. Vous pouvez tester le processus d'achat complet jusqu'à la simulation bancaire Stripe.</p>
         </div>
-    </div>
+
+        <div class="catalog">
+            <div class="product-card">
+                <div class="product-image">🐾</div>
+                <div class="product-info">
+                    <h2 class="product-title">Chien en bois chantourné</h2>
+                    <p class="product-desc">Magnifique silhouette de canidé découpée avec précision à la scie à chantourner. Idéal pour décorer un meuble ou un atelier de passionné.</p>
+                    <div class="product-footer">
+                        <span class="price">65,00 €</span>
+                        <a href="https://buy.stripe.com/test_8x2cN5a0W8pb1xdeNNdnW0" class="btn-buy" target="_blank">Acheter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🦌</div>
+                <div class="product-info">
+                    <h2 class="product-title">Cerf Majestueux en Chêne</h2>
+                    <p class="product-desc">Pièce de grande taille représentant un cerf au cœur de la forêt. Bois de chêne local poncé finement et huilé à l'huile de lin naturelle.</p>
+                    <div class="product-footer">
+                        <span class="price">95,00 €</span>
+                        <a href="#" class="btn-buy" onclick="alert('Ceci est une démo. Seul le produit Chien possède un lien Stripe actif !'); return false;">Acheter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🕊️</div>
+                <div class="product-info">
+                    <h2 class="product-title">Colombe de la Paix</h2>
+                    <p class="product-desc">Suspension délicate en bois de frêne léger, idéale pour suspendre près d'une fenêtre ou dans une chambre d'enfant. Finition brute satinée.</p>
+                    <div class="product-footer">
+                        <span class="price">30,00 €</span>
+                        <a href="#" class="btn-buy" onclick="alert('Ceci est une démo. Seul le produit Chien possède un lien Stripe actif !'); return false;">Acheter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>🔒 Démo sécurisée propulsée par Cloudflare Pages & Stripe Test Mode</p>
+        <p>Atelier Chantournage &copy; 2026 - Développé avec soin par Mathis</p>
+    </footer>
+
 </body>
 </html>
